@@ -1153,6 +1153,16 @@
             }
             bindControls() {
                 document.addEventListener('keydown', e => {
+                    if (e.key.toLowerCase() === 'f') {
+                        const active = document.activeElement;
+                        if (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA' && !active.isContentEditable) {
+                            if (!document.fullscreenElement) {
+                                document.documentElement.requestFullscreen();
+                            } else {
+                                document.exitFullscreen();
+                            }
+                        }
+                    }
                     if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { this.next(); }
                     if (e.key === 'ArrowLeft' || e.key === 'PageUp') { this.prev(); }
                 });
