@@ -8,16 +8,17 @@ An interactive, zero-dependency, cinematic HTML presentation on **Java Virtual M
 - **Visual Design Parity**: Glassmorphism (`backdrop-filter: blur(28px)`), radial gradient depth, SVG film grain noise overlay, and drifting ambient glow orbs.
 - **Interactive Technical Simulations**:
   1. **Title & Speaker Metadata**: K. Agasthya Reddy | 25B81A6768 | CSD-B
-  2. **Core Foundation & Philosophy**: `javac` compiler pipeline to universal `.class` bytecode (`0xCAFEBABE`)
-  3. **Architectural Pillars**: Platform independence, automatic memory management, HotSpot JIT compilation, and security sandboxing
-  4. **Complete Subsystem Map**: Individually boxed Class Loader, Runtime Memory Areas (Heap, Metaspace, Stacks, PC Registers, Native Stacks), Execution Engine, and JNI
-  5. **Class Loader in Action**: Parent-first delegation hierarchy (Bootstrap → Platform → App) and 3-stage lifecycle (Loading, Linking, Initialization)
-  6. **Runtime Memory & Thread Isolation**: Thread-private stacks & PC registers vs thread-shared Heap & Metaspace
-  7. **Stack Frames vs Heap Allocation**: Live execution trace of method calls, primitive local variables, and reference pointers to heap objects
-  8. **PC Register & Bytecode Execution Loop**: Opcode execution tracking (`iadd`), operand stack push/pop evaluation, and instruction pointer offsets
-  9. **Execution Engine & Tiered Compilation**: Fast Interpreter startup → HotSpot Profiler invocation thresholds → C1/C2 JIT native x86_64/ARM64 generation
-  10. **Garbage Collection & Reachability Analysis**: Root tracing from thread stacks/statics, live object graphs, and sweep/reclamation of cyclic unreachables
-  11. **Key Architectural Takeaways & Summary**: Summary pills and closing presenter attribution
+  2. **Java Features**: Foundations of Java (Object-Oriented, Distributed, Simple, Robust, Secure, etc.)
+  3. **How Java Runs**: Compilation pipeline from source to portable bytecode
+  4. **JVM Architecture**: Architectural blueprint of the runtime environment
+  5. **JVM Components Overview**: High-level map of Class Loader, Memory Areas, and Execution Engine
+  6. **Class Loader in Action**: Three-stage lifecycle (Loading, Linking, Initialization)
+  7. **JVM Memory Components**: Method Area, Heap, Call Stack, PC Register, and Native Stack
+  8. **JIT Compiler**: Interpreter startup combined with HotSpot dynamic native compilation
+  9. **Garbage Collection**: Live reachability graph analysis and automatic memory reclamation
+  10. **Platform Independence**: "Write Once, Run Anywhere" via universal bytecode and OS-tailored JVMs
+  11. **Live JVM Execution**: Real-time animated memory dashboard showing Stack, Heap, PC Register, and Console trace
+  12. **Closing & Summary**: Presentation wrap-up and Q&A
 - **Interactive Navigation**:
   - `→` / `Space` / `Page Down` / `↓`: Next Slide
   - `←` / `Page Up` / `↑`: Previous Slide

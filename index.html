@@ -556,7 +556,204 @@
                 </div>
             </section>
 
-                        <!-- SLIDE 8: LIVE JVM EXECUTION -->
+                        <!-- SLIDE 8 -->
+            <section class="slide">
+                <div class="slide-content-wrapper">
+                    <div class="slide-header reveal"><h2 class="slide-title">JIT Compiler</h2></div>
+                    <div class="split-grid reveal delay-1" style="grid-template-columns: 1fr 340px;">
+
+                        <div class="glass-panel" style="padding: clamp(32px, 4vh, 56px); justify-content:center; gap: clamp(24px, 3vh, 40px); overflow-y:auto;">
+                            <div>
+                                <h3 style="font-size:var(--title-component); color:var(--jvm-purple); font-weight:900; margin-bottom:8px;">WHAT IS JIT?</h3>
+                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">The Just-In-Time compiler is part of the JVM's Execution Engine. It converts suitable Java bytecode into native machine code while the program is running.<br><br><span style="color:var(--text-dim);">This means the JVM does not necessarily need to interpret every instruction in the same way for the entire lifetime of the program.</span></p>
+                            </div>
+
+                            <div>
+                                <h3 style="font-size:var(--title-component); color:var(--jvm-cyan); font-weight:900; margin-bottom:8px;">WHY DOES THE JVM USE JIT?</h3>
+                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">Interpreting bytecode instruction by instruction provides flexibility, but repeatedly interpreting the same code can introduce execution overhead.<br><br><span style="color:var(--text-dim);">The JIT Compiler can identify code that is executed repeatedly and compile it into native machine code. That native code can then be executed directly by the processor.</span></p>
+                            </div>
+
+                            <div style="background:rgba(20,22,32,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:20px;">
+                                <h3 style="font-size:var(--label-important); color:var(--jvm-emerald); font-weight:900; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.05em;">Key Idea</h3>
+                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.5;">The JVM combines <b style="color:#fff;">interpretation + runtime compilation</b> rather than relying on only one execution technique.</p>
+                            </div>
+                        </div>
+
+                        <!-- Compact Flowchart -->
+                        <div class="glass-panel" style="padding: 24px; align-items:center; justify-content:center; gap:8px;">
+
+                            <div class="glow-box" style="width:85%; text-align:center; padding:12px;">
+                                <span style="font-weight:800; font-size:var(--label-important); color:#fff;">Java Bytecode</span>
+                            </div>
+                            <div class="arrow-container" style="height:30px;">↓<div class="packet" id="p9-1"></div></div>
+
+                            <div class="glow-box" style="width:85%; text-align:center; padding:12px;">
+                                <span style="font-weight:800; font-size:var(--label-important); color:#fff;">Interpreter</span>
+                            </div>
+                            <div class="arrow-container" style="height:50px;">↓
+                                <div style="position:absolute; right:110%; top:50%; transform:translateY(-50%); text-align:right; white-space:nowrap; font-size:var(--body-sm); color:var(--text-dim); line-height:1.4;">Repeated runtime<br>execution detected</div>
+                                <div class="packet" id="p9-2"></div>
+                            </div>
+
+                            <div class="glow-box" style="width:85%; text-align:center; border-color:var(--jvm-purple); padding:16px;">
+                                <span style="font-weight:900; font-size:var(--title-component); color:var(--jvm-purple);">JIT Compiler</span>
+                                <div style="font-size:var(--body-sm); color:var(--text-muted); margin-top:8px;">Processing...</div>
+                            </div>
+                            <div class="arrow-container" style="height:30px;">↓<div class="packet" id="p9-3"></div></div>
+
+                            <div class="glow-box" style="width:85%; text-align:center; padding:12px;">
+                                <span style="font-weight:800; font-size:var(--label-important); color:#fff;">Native Machine Code</span>
+                            </div>
+                            <div class="arrow-container" style="height:30px;">↓<div class="packet" id="p9-4"></div></div>
+
+                            <div style="font-weight:900; font-size:var(--title-component); color:#fff; font-family:var(--font-mono);">CPU</div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 9 -->
+            <section class="slide">
+                <div class="slide-content-wrapper">
+                    <div class="slide-header reveal"><h2 class="slide-title">Garbage Collection</h2></div>
+                    <div class="split-grid reveal delay-1" style="grid-template-columns: 1fr 1fr; gap:40px;">
+
+                        <div class="glass-panel" style="padding: clamp(32px, 4vh, 56px); justify-content:center; gap: clamp(24px, 3vh, 40px);">
+                            <div>
+                                <h3 style="font-size:var(--title-component); color:var(--jvm-cyan); font-weight:900; margin-bottom:12px;">WHAT IS GARBAGE COLLECTION?</h3>
+                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">Garbage Collection is the JVM's automatic memory-management mechanism for reclaiming memory occupied by objects that are no longer reachable by the running program.<br><br>The programmer does not normally need to manually free Java objects.</p>
+                            </div>
+
+                            <div style="height: 1px; background: rgba(255,255,255,0.05); width: 100%;"></div>
+
+                            <div>
+                                <h3 style="font-size:var(--title-component); color:var(--jvm-amber); font-weight:900; margin-bottom:12px;">WHY IS IT NEEDED?</h3>
+                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">Objects are continuously created while a Java program runs.<br><br><span style="color:var(--text-dim);">Some objects eventually become unreachable because there are no longer any references that can access them. That memory can then be reclaimed by the Garbage Collector.</span></p>
+                            </div>
+                        </div>
+
+                        <div class="glass-panel" style="padding: 24px; align-items:center; justify-content:center;">
+
+                            <div style="position:relative; width: 100%; height: 500px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; background: rgba(0,0,0,0.2);">
+                                <div class="mono" style="position:absolute; top:20px; left:30px; font-weight:900; font-size:var(--label-important); color:var(--text-muted);">HEAP AREA</div>
+
+                                <!-- Large Nodes -->
+                                <div class="gc-node reachable" id="gcn-a" style="position:absolute; top:100px; left:120px; width:70px; height:70px; font-size:24px;">A</div>
+                                <div class="gc-node reachable" id="gcn-b" style="position:absolute; top:300px; left:200px; width:70px; height:70px; font-size:24px;">B</div>
+
+                                <div class="gc-node unreachable" id="gcn-c" style="position:absolute; top:150px; left:350px; width:70px; height:70px; font-size:24px;">C</div>
+
+                                <div class="gc-node reachable" id="gcn-d" style="position:absolute; top:360px; left:460px; width:70px; height:70px; font-size:24px;">D</div>
+
+                                <div class="gc-node unreachable" id="gcn-e" style="position:absolute; top:120px; left:620px; width:70px; height:70px; font-size:24px;">E</div>
+                                <div class="gc-node unreachable" id="gcn-f" style="position:absolute; top:320px; left:650px; width:70px; height:70px; font-size:24px;">F</div>
+                                <div class="gc-node reachable" id="gcn-g" style="position:absolute; top:250px; left:80px; width:70px; height:70px; font-size:24px;">G</div>
+
+                                <!-- Pointers / Arrows (Faked with CSS lines for visuals) -->
+                                <svg style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:0.6;">
+                                    <path d="M50 250 L120 135" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
+                                    <path d="M50 250 L200 335" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
+                                    <path d="M50 250 L80 285" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
+                                    <path d="M190 135 L460 395" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
+                                    <defs>
+                                        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--jvm-emerald)" />
+                                        </marker>
+                                    </defs>
+                                </svg>
+
+                                <!-- Legend -->
+                                <div style="position:absolute; bottom:30px; right:30px; display:flex; flex-direction:column; gap:16px; font-size:var(--body-text); background:rgba(20,25,30,0.6); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(8px);">
+                                    <div style="display:flex; align-items:center; gap:12px;"><div style="width:16px; height:16px; border-radius:50%; border:3px solid var(--jvm-emerald);"></div> Reachable Reference</div>
+                                    <div style="display:flex; align-items:center; gap:12px;"><div style="width:16px; height:16px; border-radius:50%; border:3px solid var(--text-muted);"></div> Unreachable / Garbage</div>
+                                </div>
+
+                                <!-- GC Scanner Circle -->
+                                <div class="gc-scanner" id="gc-scan-ring" style="top:0; left:0; width:100px; height:100px; transform:translate(-15px, -15px);"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 10 -->
+            <section class="slide">
+                <div class="slide-content-wrapper">
+                    <div class="slide-header reveal"><h2 class="slide-title">Platform Independence</h2></div>
+                    <div class="split-grid reveal delay-1" style="grid-template-columns: 1fr 400px;">
+
+                        <div class="glass-panel" style="padding: clamp(32px, 4vh, 56px); justify-content:center; gap: clamp(16px, 2vh, 24px); overflow-y:auto;">
+                            <h3 style="font-size:var(--label-important); color:var(--jvm-cyan); font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Core Idea</h3>
+                            <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.5; margin-bottom:16px;">Java source code is compiled into bytecode rather than directly into machine code for one specific operating system. The bytecode can then be executed by a JVM implementation designed for the target platform.</p>
+
+                            <ul style="font-size:var(--body-text); color:var(--text-dim); line-height:1.6; padding-left:24px; display:flex; flex-direction:column; gap:16px;">
+                                <li><b style="color:#fff;">1. Source code is compiled once</b> — The Java compiler converts <span class="mono">.java</span> into <span class="mono">.class</span> bytecode.</li>
+                                <li><b style="color:#fff;">2. Bytecode is platform-independent</b> — The bytecode is not tied to a particular operating system or processor architecture.</li>
+                                <li><b style="color:#fff;">3. JVM is platform-specific</b> — Windows, Linux and macOS use JVM implementations appropriate to their respective platforms.</li>
+                                <li><b style="color:#fff;">4. JVM provides the execution environment</b> — The JVM interprets or compiles the same bytecode for the target system.</li>
+                                <li><b style="color:#fff;">5. Same bytecode, different environments</b> — A compiled Java program can be moved between compatible systems without recompiling.</li>
+                                <li><b style="color:#fff;">6. The JVM handles the specifics</b> — Platform independence does NOT mean the JVM is identical everywhere. The bytecode is portable; the JVM handles the OS details.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Permanent Diagram -->
+                        <div class="glass-panel" style="padding: 24px; align-items:center; justify-content:center; gap:8px;">
+
+                            <div class="glow-box" style="width:70%; text-align:center; padding:12px;">
+                                <span style="font-weight:900; font-size:var(--label-important); color:#fff; text-transform:uppercase; letter-spacing:0.1em;">BYTECODE</span>
+                            </div>
+
+                            <!-- Branching connection -->
+                            <div style="display:flex; flex-direction:column; align-items:center; width:100%; margin:20px 0;">
+                                <div style="height:30px; width:2px; background:var(--text-muted); position:relative;">
+                                    <div class="packet" id="p11-3"></div>
+                                </div>
+                                <div style="width:85%; height:2px; background:var(--text-muted); position:relative;">
+                                    <div class="packet" id="p11-4L" style="top: -2px;"></div>
+                                    <div class="packet" id="p11-4R" style="top: -2px;"></div>
+                                </div>
+                                <div style="display:flex; justify-content:space-between; width:85%;">
+                                    <div style="height:30px; width:2px; background:var(--text-muted); position:relative;"><div class="packet" id="p11-5L"></div></div>
+                                    <div style="height:30px; width:2px; background:var(--text-muted); position:relative;"><div class="packet" id="p11-5C"></div></div>
+                                    <div style="height:30px; width:2px; background:var(--text-muted); position:relative;"><div class="packet" id="p11-5R"></div></div>
+                                </div>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; width:100%; gap:12px;">
+                                <div class="glow-box" style="flex:1; text-align:center; padding:16px; border-color:var(--jvm-cyan);">
+                                    <span style="font-weight:900; font-size:var(--label-important); color:var(--jvm-cyan); display:block;">JVM</span>
+                                    <span style="font-size:var(--body-sm); color:var(--text-main); font-weight:600; margin-top:4px; display:block;">Windows</span>
+                                </div>
+                                <div class="glow-box" style="flex:1; text-align:center; padding:16px; border-color:var(--jvm-cyan);">
+                                    <span style="font-weight:900; font-size:var(--label-important); color:var(--jvm-cyan); display:block;">JVM</span>
+                                    <span style="font-size:var(--body-sm); color:var(--text-main); font-weight:600; margin-top:4px; display:block;">Linux</span>
+                                </div>
+                                <div class="glow-box" style="flex:1; text-align:center; padding:16px; border-color:var(--jvm-cyan);">
+                                    <span style="font-weight:900; font-size:var(--label-important); color:var(--jvm-cyan); display:block;">JVM</span>
+                                    <span style="font-size:var(--body-sm); color:var(--text-main); font-weight:600; margin-top:4px; display:block;">macOS</span>
+                                </div>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; width:90%; padding:0 30px; margin: 12px 0;">
+                                <div style="color:var(--text-muted); font-size:20px;">↓</div>
+                                <div style="color:var(--text-muted); font-size:20px;">↓</div>
+                                <div style="color:var(--text-muted); font-size:20px;">↓</div>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; width:100%; gap:8px;">
+                                <div style="flex:1; text-align:center;"><span style="font-weight:900; font-size:var(--body-sm); color:var(--jvm-emerald); font-family:var(--font-mono); text-transform:uppercase;">Native Execution</span></div>
+                                <div style="flex:1; text-align:center;"><span style="font-weight:900; font-size:var(--body-sm); color:var(--jvm-emerald); font-family:var(--font-mono); text-transform:uppercase;">Native Execution</span></div>
+                                <div style="flex:1; text-align:center;"><span style="font-weight:900; font-size:var(--body-sm); color:var(--jvm-emerald); font-family:var(--font-mono); text-transform:uppercase;">Native Execution</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SLIDE 11: LIVE JVM EXECUTION -->
             <section class="slide" id="slide-8">
                 <div class="slide-content-wrapper">
                     <div class="slide-header reveal" style="justify-content: space-between; align-items: center;">
@@ -782,203 +979,6 @@
                 </div>
             </section>
 
-            <!-- SLIDE 9 -->
-            <section class="slide">
-                <div class="slide-content-wrapper">
-                    <div class="slide-header reveal"><h2 class="slide-title">JIT Compiler</h2></div>
-                    <div class="split-grid reveal delay-1" style="grid-template-columns: 1fr 340px;">
-
-                        <div class="glass-panel" style="padding: clamp(32px, 4vh, 56px); justify-content:center; gap: clamp(24px, 3vh, 40px); overflow-y:auto;">
-                            <div>
-                                <h3 style="font-size:var(--title-component); color:var(--jvm-purple); font-weight:900; margin-bottom:8px;">WHAT IS JIT?</h3>
-                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">The Just-In-Time compiler is part of the JVM's Execution Engine. It converts suitable Java bytecode into native machine code while the program is running.<br><br><span style="color:var(--text-dim);">This means the JVM does not necessarily need to interpret every instruction in the same way for the entire lifetime of the program.</span></p>
-                            </div>
-
-                            <div>
-                                <h3 style="font-size:var(--title-component); color:var(--jvm-cyan); font-weight:900; margin-bottom:8px;">WHY DOES THE JVM USE JIT?</h3>
-                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">Interpreting bytecode instruction by instruction provides flexibility, but repeatedly interpreting the same code can introduce execution overhead.<br><br><span style="color:var(--text-dim);">The JIT Compiler can identify code that is executed repeatedly and compile it into native machine code. That native code can then be executed directly by the processor.</span></p>
-                            </div>
-
-                            <div style="background:rgba(20,22,32,0.5); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:20px;">
-                                <h3 style="font-size:var(--label-important); color:var(--jvm-emerald); font-weight:900; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.05em;">Key Idea</h3>
-                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.5;">The JVM combines <b style="color:#fff;">interpretation + runtime compilation</b> rather than relying on only one execution technique.</p>
-                            </div>
-                        </div>
-
-                        <!-- Compact Flowchart -->
-                        <div class="glass-panel" style="padding: 24px; align-items:center; justify-content:center; gap:8px;">
-
-                            <div class="glow-box" style="width:85%; text-align:center; padding:12px;">
-                                <span style="font-weight:800; font-size:var(--label-important); color:#fff;">Java Bytecode</span>
-                            </div>
-                            <div class="arrow-container" style="height:30px;">↓<div class="packet" id="p9-1"></div></div>
-
-                            <div class="glow-box" style="width:85%; text-align:center; padding:12px;">
-                                <span style="font-weight:800; font-size:var(--label-important); color:#fff;">Interpreter</span>
-                            </div>
-                            <div class="arrow-container" style="height:50px;">↓
-                                <div style="position:absolute; right:110%; top:50%; transform:translateY(-50%); text-align:right; white-space:nowrap; font-size:var(--body-sm); color:var(--text-dim); line-height:1.4;">Repeated runtime<br>execution detected</div>
-                                <div class="packet" id="p9-2"></div>
-                            </div>
-
-                            <div class="glow-box" style="width:85%; text-align:center; border-color:var(--jvm-purple); padding:16px;">
-                                <span style="font-weight:900; font-size:var(--title-component); color:var(--jvm-purple);">JIT Compiler</span>
-                                <div style="font-size:var(--body-sm); color:var(--text-muted); margin-top:8px;">Processing...</div>
-                            </div>
-                            <div class="arrow-container" style="height:30px;">↓<div class="packet" id="p9-3"></div></div>
-
-                            <div class="glow-box" style="width:85%; text-align:center; padding:12px;">
-                                <span style="font-weight:800; font-size:var(--label-important); color:#fff;">Native Machine Code</span>
-                            </div>
-                            <div class="arrow-container" style="height:30px;">↓<div class="packet" id="p9-4"></div></div>
-
-                            <div style="font-weight:900; font-size:var(--title-component); color:#fff; font-family:var(--font-mono);">CPU</div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 10 -->
-            <section class="slide">
-                <div class="slide-content-wrapper">
-                    <div class="slide-header reveal"><h2 class="slide-title">Garbage Collection</h2></div>
-                    <div class="split-grid reveal delay-1" style="grid-template-columns: 1fr 1fr; gap:40px;">
-
-                        <div class="glass-panel" style="padding: clamp(32px, 4vh, 56px); justify-content:center; gap: clamp(24px, 3vh, 40px);">
-                            <div>
-                                <h3 style="font-size:var(--title-component); color:var(--jvm-cyan); font-weight:900; margin-bottom:12px;">WHAT IS GARBAGE COLLECTION?</h3>
-                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">Garbage Collection is the JVM's automatic memory-management mechanism for reclaiming memory occupied by objects that are no longer reachable by the running program.<br><br>The programmer does not normally need to manually free Java objects.</p>
-                            </div>
-
-                            <div style="height: 1px; background: rgba(255,255,255,0.05); width: 100%;"></div>
-
-                            <div>
-                                <h3 style="font-size:var(--title-component); color:var(--jvm-amber); font-weight:900; margin-bottom:12px;">WHY IS IT NEEDED?</h3>
-                                <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.6;">Objects are continuously created while a Java program runs.<br><br><span style="color:var(--text-dim);">Some objects eventually become unreachable because there are no longer any references that can access them. That memory can then be reclaimed by the Garbage Collector.</span></p>
-                            </div>
-                        </div>
-
-                        <div class="glass-panel" style="padding: 24px; align-items:center; justify-content:center;">
-
-                            <div style="position:relative; width: 100%; height: 500px; border: 1px dashed rgba(255,255,255,0.2); border-radius: 20px; background: rgba(0,0,0,0.2);">
-                                <div class="mono" style="position:absolute; top:20px; left:30px; font-weight:900; font-size:var(--label-important); color:var(--text-muted);">HEAP AREA</div>
-
-                                <!-- Large Nodes -->
-                                <div class="gc-node reachable" id="gcn-a" style="position:absolute; top:100px; left:120px; width:70px; height:70px; font-size:24px;">A</div>
-                                <div class="gc-node reachable" id="gcn-b" style="position:absolute; top:300px; left:200px; width:70px; height:70px; font-size:24px;">B</div>
-
-                                <div class="gc-node unreachable" id="gcn-c" style="position:absolute; top:150px; left:350px; width:70px; height:70px; font-size:24px;">C</div>
-
-                                <div class="gc-node reachable" id="gcn-d" style="position:absolute; top:360px; left:460px; width:70px; height:70px; font-size:24px;">D</div>
-
-                                <div class="gc-node unreachable" id="gcn-e" style="position:absolute; top:120px; left:620px; width:70px; height:70px; font-size:24px;">E</div>
-                                <div class="gc-node unreachable" id="gcn-f" style="position:absolute; top:320px; left:650px; width:70px; height:70px; font-size:24px;">F</div>
-                                <div class="gc-node reachable" id="gcn-g" style="position:absolute; top:250px; left:80px; width:70px; height:70px; font-size:24px;">G</div>
-
-                                <!-- Pointers / Arrows (Faked with CSS lines for visuals) -->
-                                <svg style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none; opacity:0.6;">
-                                    <path d="M50 250 L120 135" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
-                                    <path d="M50 250 L200 335" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
-                                    <path d="M50 250 L80 285" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
-                                    <path d="M190 135 L460 395" stroke="var(--jvm-emerald)" stroke-width="3" stroke-dasharray="5,5" fill="none" marker-end="url(#arrow)"/>
-                                    <defs>
-                                        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                            <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--jvm-emerald)" />
-                                        </marker>
-                                    </defs>
-                                </svg>
-
-                                <!-- Legend -->
-                                <div style="position:absolute; bottom:30px; right:30px; display:flex; flex-direction:column; gap:16px; font-size:var(--body-text); background:rgba(20,25,30,0.6); padding:20px; border-radius:12px; border:1px solid rgba(255,255,255,0.1); backdrop-filter:blur(8px);">
-                                    <div style="display:flex; align-items:center; gap:12px;"><div style="width:16px; height:16px; border-radius:50%; border:3px solid var(--jvm-emerald);"></div> Reachable Reference</div>
-                                    <div style="display:flex; align-items:center; gap:12px;"><div style="width:16px; height:16px; border-radius:50%; border:3px solid var(--text-muted);"></div> Unreachable / Garbage</div>
-                                </div>
-
-                                <!-- GC Scanner Circle -->
-                                <div class="gc-scanner" id="gc-scan-ring" style="top:0; left:0; width:100px; height:100px; transform:translate(-15px, -15px);"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <!-- SLIDE 11 -->
-            <section class="slide">
-                <div class="slide-content-wrapper">
-                    <div class="slide-header reveal"><h2 class="slide-title">Platform Independence</h2></div>
-                    <div class="split-grid reveal delay-1" style="grid-template-columns: 1fr 400px;">
-
-                        <div class="glass-panel" style="padding: clamp(32px, 4vh, 56px); justify-content:center; gap: clamp(16px, 2vh, 24px); overflow-y:auto;">
-                            <h3 style="font-size:var(--label-important); color:var(--jvm-cyan); font-weight:800; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Core Idea</h3>
-                            <p style="font-size:var(--body-text); color:var(--text-main); line-height:1.5; margin-bottom:16px;">Java source code is compiled into bytecode rather than directly into machine code for one specific operating system. The bytecode can then be executed by a JVM implementation designed for the target platform.</p>
-
-                            <ul style="font-size:var(--body-text); color:var(--text-dim); line-height:1.6; padding-left:24px; display:flex; flex-direction:column; gap:16px;">
-                                <li><b style="color:#fff;">1. Source code is compiled once</b> — The Java compiler converts <span class="mono">.java</span> into <span class="mono">.class</span> bytecode.</li>
-                                <li><b style="color:#fff;">2. Bytecode is platform-independent</b> — The bytecode is not tied to a particular operating system or processor architecture.</li>
-                                <li><b style="color:#fff;">3. JVM is platform-specific</b> — Windows, Linux and macOS use JVM implementations appropriate to their respective platforms.</li>
-                                <li><b style="color:#fff;">4. JVM provides the execution environment</b> — The JVM interprets or compiles the same bytecode for the target system.</li>
-                                <li><b style="color:#fff;">5. Same bytecode, different environments</b> — A compiled Java program can be moved between compatible systems without recompiling.</li>
-                                <li><b style="color:#fff;">6. The JVM handles the specifics</b> — Platform independence does NOT mean the JVM is identical everywhere. The bytecode is portable; the JVM handles the OS details.</li>
-                            </ul>
-                        </div>
-
-                        <!-- Permanent Diagram -->
-                        <div class="glass-panel" style="padding: 24px; align-items:center; justify-content:center; gap:8px;">
-
-                            <div class="glow-box" style="width:70%; text-align:center; padding:12px;">
-                                <span style="font-weight:900; font-size:var(--label-important); color:#fff; text-transform:uppercase; letter-spacing:0.1em;">BYTECODE</span>
-                            </div>
-
-                            <!-- Branching connection -->
-                            <div style="display:flex; flex-direction:column; align-items:center; width:100%; margin:20px 0;">
-                                <div style="height:30px; width:2px; background:var(--text-muted); position:relative;">
-                                    <div class="packet" id="p11-3"></div>
-                                </div>
-                                <div style="width:85%; height:2px; background:var(--text-muted); position:relative;">
-                                    <div class="packet" id="p11-4L" style="top: -2px;"></div>
-                                    <div class="packet" id="p11-4R" style="top: -2px;"></div>
-                                </div>
-                                <div style="display:flex; justify-content:space-between; width:85%;">
-                                    <div style="height:30px; width:2px; background:var(--text-muted); position:relative;"><div class="packet" id="p11-5L"></div></div>
-                                    <div style="height:30px; width:2px; background:var(--text-muted); position:relative;"><div class="packet" id="p11-5C"></div></div>
-                                    <div style="height:30px; width:2px; background:var(--text-muted); position:relative;"><div class="packet" id="p11-5R"></div></div>
-                                </div>
-                            </div>
-
-                            <div style="display:flex; justify-content:space-between; width:100%; gap:12px;">
-                                <div class="glow-box" style="flex:1; text-align:center; padding:16px; border-color:var(--jvm-cyan);">
-                                    <span style="font-weight:900; font-size:var(--label-important); color:var(--jvm-cyan); display:block;">JVM</span>
-                                    <span style="font-size:var(--body-sm); color:var(--text-main); font-weight:600; margin-top:4px; display:block;">Windows</span>
-                                </div>
-                                <div class="glow-box" style="flex:1; text-align:center; padding:16px; border-color:var(--jvm-cyan);">
-                                    <span style="font-weight:900; font-size:var(--label-important); color:var(--jvm-cyan); display:block;">JVM</span>
-                                    <span style="font-size:var(--body-sm); color:var(--text-main); font-weight:600; margin-top:4px; display:block;">Linux</span>
-                                </div>
-                                <div class="glow-box" style="flex:1; text-align:center; padding:16px; border-color:var(--jvm-cyan);">
-                                    <span style="font-weight:900; font-size:var(--label-important); color:var(--jvm-cyan); display:block;">JVM</span>
-                                    <span style="font-size:var(--body-sm); color:var(--text-main); font-weight:600; margin-top:4px; display:block;">macOS</span>
-                                </div>
-                            </div>
-
-                            <div style="display:flex; justify-content:space-between; width:90%; padding:0 30px; margin: 12px 0;">
-                                <div style="color:var(--text-muted); font-size:20px;">↓</div>
-                                <div style="color:var(--text-muted); font-size:20px;">↓</div>
-                                <div style="color:var(--text-muted); font-size:20px;">↓</div>
-                            </div>
-
-                            <div style="display:flex; justify-content:space-between; width:100%; gap:8px;">
-                                <div style="flex:1; text-align:center;"><span style="font-weight:900; font-size:var(--body-sm); color:var(--jvm-emerald); font-family:var(--font-mono); text-transform:uppercase;">Native Execution</span></div>
-                                <div style="flex:1; text-align:center;"><span style="font-weight:900; font-size:var(--body-sm); color:var(--jvm-emerald); font-family:var(--font-mono); text-transform:uppercase;">Native Execution</span></div>
-                                <div style="flex:1; text-align:center;"><span style="font-weight:900; font-size:var(--body-sm); color:var(--jvm-emerald); font-family:var(--font-mono); text-transform:uppercase;">Native Execution</span></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <!-- SLIDE 12 -->
             <section class="slide">
                 <div class="slide-content-wrapper" style="justify-content:center; align-items:center; text-align:center;">
@@ -1166,7 +1166,7 @@
                 });
                 if(this.pageIndicator) this.pageIndicator.innerText = String(idx+1).padStart(2,'0') + " / " + String(this.slides.length).padStart(2,'0');
                 if(this.env) this.env.onSlideChange(idx, this.slides.length);
-                if (idx === 7) {
+                if (idx === 10) {
                     if (typeof window.startJVMExecution === 'function') {
                         window.startJVMExecution();
                     }
